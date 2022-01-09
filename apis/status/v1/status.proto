@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package status.v1;
+
+option go_package = "github.com/askalag/protolib/gen/proto/go/status/v1;status_v1";
+
+message StatusRequest {}
+
+message StatusResponse {
+  string status = 1;
+}
+
+service StatusService {
+  rpc Status (StatusRequest) returns (StatusResponse) {}
+}
+
+
