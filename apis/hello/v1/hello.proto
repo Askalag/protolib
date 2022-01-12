@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package pb.hello.v1;
+package hello.v1;
 
 option go_package = "github.com/askalag/protolib/gen/proto/go/hello/v1;hello_v1";
 
