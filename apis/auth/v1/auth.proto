@@ -17,14 +17,14 @@ message SignInResponse {
 message SignUpRequest {
   string login = 1;
   string password = 2;
-  string firstName = 3;
-  string secondName = 4;
+  string first_name = 3;
+  string second_name = 4;
   string email = 5;
 }
 
 message SignUpResponse {
   string token = 1;
-  string refreshToken = 2;
+  string refresh_token = 2;
 }
 
 service AuthService {
