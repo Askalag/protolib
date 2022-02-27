@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package auth.v1;
+
+option go_package = "github.com/askalag/protolib/gen/proto/go/auth/v1;authv1";
+
+message SignInRequest {
+  string login = 1;
+  string password = 2;
+}
+
+message SignInResponse {
+  string token = 1;
+  string r_token = 2;
+}
+
+message SignUpRequest {
+  string login = 1;
+  string password = 2;
+  string firstName = 3;
+  string secondName = 4;
+  string email = 5;
+}
+
+message SignUpResponse {
+  string token = 1;
+  string refreshToken = 2;
+}
+
+service AuthService {
+  rpc SignIn (SignInRequest) returns (SignInResponse);
+  rpc SignUp (SignUpRequest) returns (SignUpResponse);
+}
