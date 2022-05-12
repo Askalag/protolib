@@ -9,7 +9,7 @@ info-run:
 	@echo $(PATH)
 	@echo "GoROOT:"
 	@echo $(GOROOT)
-	@echo "GoPATH"
+	@echo "GoPATH:"
 	@echo $(GOPATH)
 
 .PHONY: RUN
