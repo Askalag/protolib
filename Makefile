@@ -1,29 +1,23 @@
 #update path
-PATH := $(PATH):$(GOPATH)/bin
 GOROOT := $(GOROOT)
-GOPATH := $(GOPATH)
+GOPATH ?= $(shell go env GOPATH)
+PATH := $(PATH):$(GOPATH)/bin
 
-.PHONY: INFO
-info-run:
-	@echo "PATH:"
-	@echo $(PATH)
-	@echo "GoROOT:"
-	@echo $(GOROOT)
-	@echo "GoPATH:"
-	@echo $(GOPATH)
-
-.PHONY: RUN
 run: go-dep install-tools buf-generate
+	go version
 
-.PHONY: dependency
 go-dep:
 	go mod download
 
-.PHONY: install-tools
 install-tools:
 	go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.28
 	go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2.0
 
-.PHONY: grpc-gen
+install-buf:
+	# Substitute GOBIN for your bin directory
+    # Leave unset to default to $GOPATH/bin
+    GO111MODULE=on GOBIN=/usr/local/bin go install \
+      github.com/bufbuild/buf/cmd/buf@v1.4.0
+
 buf-generate:
 	buf generate
